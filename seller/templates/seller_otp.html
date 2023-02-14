@@ -1,0 +1,41 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+
+<div id="auth">
+        
+    <div class="row h-100">
+        <div class="col-lg-7 d-none d-lg-block">
+            <div id="auth-left">
+    
+            </div>
+        </div>
+        <div class="col-lg-5 col-12">
+            <div id="auth-right">
+                <div class="auth-logo">
+                    <a href="index.html"><img src="{% static 'assets/images/logo.png' %}" alt="Logo"> Atrana</a>  
+                </div>
+                <h1 class="auth-title">OTP</h1>
+                <p class="auth-subtitle mb-5">Enter your otp .</p>
+
+                <form action="{% url 'seller_otp' %}" method="post">
+                    {% csrf_token %}
+                    {{msg}}
+            
+                    <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="text" class="form-control form-control-xl" placeholder="Enter OTP" name = "s_otp">
+                        <div class="form-control-icon">
+                            <i class="bi bi-person"></i>
+                        </div>
+                    </div>
+
+                    
+                    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Submit</button>
+                </form>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+{%  endblock %}

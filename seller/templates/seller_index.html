@@ -1,0 +1,396 @@
+
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+  
+  
+	<!--Sidebar-->
+	<div class="sidebar transition overlay-scrollbars animate__animated  animate__slideInLeft">
+        <div class="sidebar-content"> 
+        	<div id="sidebar">
+			
+			<!-- Logo -->
+			<div class="logo">
+					<h2 class="mb-0"><img src="{% static 'assets/images/logo.png' %}"> Atrana</h2>
+			</div>
+
+            <ul class="side-menu">
+                <li>
+					<a href="index.html" class="active">
+						<i class='bx bxs-dashboard icon' ></i> Dashboard
+					</a>
+				</li>
+
+				<!-- Divider-->
+                <li class="divider" data-text="STARTER">STARTER</li>
+
+                
+
+                
+{% if seller_data %}
+                <li>
+                    <a href="#">
+						<i class='fa fa-th icon' ></i> 
+						SELLER DATA
+						<i class='bx bx-chevron-right icon-right' ></i>
+					</a>
+                    <ul class="side-dropdown">
+						<li><a href="{% url 'add_product' %}">Add products</a></li>
+						<li><a href="{% url 'my_products' %}">My products</a></li>
+						<!-- <li><a href="#">Edit products</a></li> -->
+						
+						<!-- <li><a href="bootstrap-spinner.html">Spinner</a></li> -->
+                    </ul>
+                </li>
+{% endif %}
+
+				<!-- Divider-->
+                <li class="divider" data-text="Atrana">Atrana</li>
+
+				<!-- <li>
+                    <a href="#">
+						<i class='bx bx-columns icon' ></i> 
+						Components 
+						<i class='bx bx-chevron-right icon-right' ></i>
+					</a>
+                    <ul class="side-dropdown">
+                        <li><a href="component-avatar.html">Avatar</a></li>
+						<li><a href="component-toastify.html">Toastify</a></li>
+                        <li><a href="component-sweet-alert.html">Sweet Alert</a></li>
+                        <li><a href="component-hero.html">Hero</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+						<i class='bx bxs-notepad icon' ></i> 
+						Forms 
+						<i class='bx bx-chevron-right icon-right' ></i>
+					</a>
+                    <ul class="side-dropdown">
+                        <li><a href="forms-editor.html">Editor</a></li>
+                        <li><a href="forms-validation.html">Validation</a></li>
+                        <li><a href="forms-checkbox.html">Checkbox</a></li>
+                        <li><a href="forms-radio.html">Radio</a></li>
+                    </ul>
+                </li>
+
+				<li>
+                    <a href="#">
+						<i class='bx bxs-widget icon' ></i> 
+						Widgets 
+						<i class='bx bx-chevron-right icon-right' ></i>
+					</a>
+                    <ul class="side-dropdown">
+                        <li><a href="widgets-chatboxs.html">ChatBox</a></li>
+                        <li><a href="widgets-email.html">Emails</a></li>
+                        <li><a href="widgets-pricing.html">Pricing</a></li>
+                    </ul>
+                </li>
+
+				<li>
+                    <a href="#">
+						<i class='bx bxs-bar-chart-alt-2 icon' ></i> 
+						Charts 
+						<i class='bx bx-chevron-right icon-right' ></i>
+					</a>
+                    <ul class="side-dropdown">
+                        <li><a href="chart-chartjs.html">ChartJS</a></li>
+                        <li><a href="chart-apexcharts.html">Apexcharts</a></li>
+                    </ul>
+                </li>
+
+				<li>
+                    <a href="#">
+						<i class='bx bxs-cloud-rain icon' ></i> 
+						Icons 
+						<i class='bx bx-chevron-right icon-right' ></i>
+					</a>
+                    <ul class="side-dropdown">
+                        <li><a href="icons-fontawesome.html">Fontawesome</a></li>
+                        <li><a href="icons-boostrap.html">Bootstrap Icons</a></li>
+                    </ul>
+                </li> -->
+
+				<!-- Divider-->
+				<li class="divider" data-text="Pages">signup</li>
+
+				<li>
+                    <a href="#">
+						<i class='bx bxs-user icon' align="center
+						" ></i> 
+						
+						<i class='bx bx-chevron-right icon-right' ></i>
+					</a>
+                    <ul class="side-dropdown">
+						{% if seller_data %}
+						<li><a href="{% url 'seller_logout' %}">Logout</a></li>
+						<li><a href="auth-forgot-password.html">Forgot Password</a></li>
+                        <li><a href="auth-reset-password.html">Reset Password</a></li>
+						{% else %}
+
+                        <li><a href="{% url 'seller_login' %}">Login</a></li>
+                        <li><a href="{% url 'seller_register' %}">Register</a></li>
+						{% endif %}
+                        
+                    </ul>
+                </li>
+
+				
+
+
+				
+
+            </ul>
+
+            <div class="ads">
+				<div class="wrapper">
+					<div class="help-icon"><i class="fa fa-circle-question fa-3x"></i></div>
+					<p>Need Help with <strong>Atrana</strong>?</p>
+                    <a href="docs/" class="btn-upgrade">Documentation</a>
+                 </div>
+            </div>
+        </div>
+
+       </div> 
+	 </div>
+	</div><!-- End Sidebar-->
+
+
+	<div class="sidebar-overlay"></div>
+
+
+	<!--Content Start-->
+	<div class="content-start transition">
+		<div class="container-fluid dashboard">
+			<div class="content-header">
+				<h1>Dashboard</h1>
+				<p></p>
+			</div>
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h4>My Orders</h4>
+					</div>
+					<div class="card-body"> 
+					<div class="table-responsive"> 
+					<table class="table table-striped">
+						<thead>
+						  <tr>
+							
+							<th scope="col">Buyer Name</th>
+							<th scope="col">Product name</th>
+							<th scope="col">Status</th>
+							<th scope="col">Action</th>
+						  </tr>
+						</thead>
+						<tbody>
+							{% for i in order_data %}
+						  <tr>
+							
+							<td>{{i.buyer.First_name}}</td>
+							
+							<td>{{i.product.product_name}}</td>
+							<td><span class="text-success">{{i.status}}</span></td>
+							
+							<td><a href="{% url 'change_status' i.id %}"><button class="btn btn-primary">Done</button></a></td>
+						  </tr>
+						  {% endfor %}
+
+						</tbody>
+					  </table>
+					  </div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-4 d-flex align-items-center">
+									<i class="fas fa-inbox icon-home bg-primary text-light"></i>
+								</div>
+								<div class="col-8">
+									<p>Revenue</p>
+									<h5>$65</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-4 d-flex align-items-center">
+									<i class="fas fa-clipboard-list icon-home bg-success text-light"></i>
+								</div>
+								<div class="col-8">
+									<p>Orders</p>
+									<h5>3000</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-4 d-flex align-items-center">
+									<i class="fas fa-chart-bar  icon-home bg-info text-light"></i>
+								</div>
+								<div class="col-8">
+									<p>Sales</p>
+									<h5>5500</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-4 d-flex align-items-center">
+									<i class="fas fa-id-card  icon-home bg-warning text-light"></i>
+								</div>
+								<div class="col-8">
+									<p>Employes</p>
+									<h5>256</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+		
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+						</div>
+						<div class="card-body">
+							<div id="columnchart"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+							<h4>Recent Messages</h4>
+						</div>
+						<div class="card-body pb-4">
+							<div class="recent-message d-flex px-4 py-3">
+								<div class="avatar avatar-lg">
+									<img src="{% static 'assets/images/message/4.jpg' %}">
+								</div>
+								<div class="name ms-4">
+									<h5 class="mb-1">Hank Schrader</h5>
+									<h6 class="text-muted mb-0">@johnducky</h6>
+								</div>
+							</div>
+							<div class="recent-message d-flex px-4 py-3">
+								<div class="avatar avatar-lg">
+									<img src="{% static 'assets/images/message/5.jpg' %}">
+								</div>
+								<div class="name ms-4">
+									<h5 class="mb-1">Dean Winchester</h5>
+									<h6 class="text-muted mb-0">@imdean</h6>
+								</div>
+							</div>
+							<div class="recent-message d-flex px-4 py-3">
+								<div class="avatar avatar-lg">
+									<img src="{% static 'assets/images/message/1.jpg' %}">
+								</div>
+								<div class="name ms-4">
+									<h5 class="mb-1">John Doe</h5>
+									<h6 class="text-muted mb-0">@Doejohn</h6>
+								</div>
+							</div>
+							<div class="px-4">
+								<button class='btn btn-block btn-xl btn-primary font-bold mt-3'>Start
+									Conversation</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<h4>Latest Transaction</h4>
+						</div>
+						<div class="card-body"> 
+						<div class="table-responsive"> 
+						<table class="table table-striped">
+							<thead>
+							  <tr>
+								<th scope="col">Order Id</th>
+								<th scope="col">Billing Name</th>
+								<th scope="col">Date</th>
+								<th scope="col">Total</th>
+								<th scope="col">Payment Status</th>
+								<th scope="col">Payment Method</th>
+								<th scope="col">View Details</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<th scope="row">#SK2548	</th>
+								<td>Neal Matthews</td>
+								<td>07 Oct, 2022</td>
+								<td>$400</td>
+								<td><span class="text-success">Paid</span></td>
+								<td>Mastercard</td>
+								<td><button class="btn btn-primary">View Details</button></td>
+							  </tr>
+
+							  <tr>
+								<th scope="row">#SK2548	</th>
+								<td>Neal Matthews</td>
+								<td>07 Oct, 2022</td>
+								<td>$400</td>
+								<td><span class="text-success">Paid</span></td>
+								<td>Visa</td>
+								<td><button class="btn btn-primary">View Details</button></td>
+							  </tr>
+
+							  <tr>
+								<th scope="row">#SK2548	</th>
+								<td>Neal Matthews</td>
+								<td>07 Oct, 2022</td>
+								<td>$400</td>
+								<td><span class="text-danger">Chargeback</span></td>
+								<td>Paypal</td>
+								<td><button class="btn btn-primary">View Details</button></td>
+							  </tr>
+
+							  <tr>
+								<th scope="row">#SK2548	</th>
+								<td>Neal Matthews</td>
+								<td>07 Oct, 2022</td>
+								<td>$400</td>
+								<td><span class="text-warning">Refund</span></td>
+								<td>Visa</td>
+								<td><button class="btn btn-primary">View Details</button></td>
+							  </tr>
+							</tbody>
+						  </table>
+						  </div>
+						</div>
+					</div>
+				</div>
+
+		   </div>
+		</div>
+	</div>
+
+
+	{% endblock %}

@@ -1,0 +1,194 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Dashboard - Atrana</title>
+
+	<!-- Bootstrap CSS-->
+	<link rel="stylesheet" href="{% static 'assets/modules/bootstrap-5.1.3/css/bootstrap.css' %}">
+	<!-- Style CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	<!-- FontAwesome CSS-->
+	<link rel="stylesheet" href="{% static 'assets/modules/fontawesome6.1.1/css/all.css' %}">
+	<!-- Boxicons CSS-->
+	<link rel="stylesheet" href="{% static 'assets/modules/boxicons/css/boxicons.min.css' %}">
+	<!-- Apexcharts  CSS -->
+	<link rel="stylesheet" href="{% static 'assets/modules/apexcharts/apexcharts.css' %}">
+</head>
+<body>
+  
+  <!--Topbar -->
+  <div class="topbar transition">
+	<div class="bars">
+		<button type="button" class="btn transition" id="sidebar-toggle">
+			<i class="fa fa-bars"></i>
+		</button>
+	</div>
+		<div class="menu">
+			<ul>
+				
+				
+
+				{% if seller_data %}
+				
+				<li class="text-center text-white">
+					<a href="{% url 'seller_index' %}"><i class="fas fa-sign-out-alt mr-2"></i>HOME</a>
+				</li>
+				
+						<li class="text-center text-white">
+							<a href="{% url 'seller_edit' %}"  >
+								<i class="fas fa-sign-out-alt mr-2">Edit_profile</i> </a>
+						</li>
+
+				
+				<li><h3>{{seller_data.full_name}}</h3></li>
+				<li class="text-center text-white">
+					<a href="{% url 'seller_logout' %}"  >
+						<i class="fas fa-sign-out-alt mr-2">Log Out</i> </a>
+				</li>
+				</li>
+				{% endif %}
+				<li class="nav-item dropdown dropdown-list-toggle">
+					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					   <i class="fa fa-bell size-icon-1"></i><span class="badge bg-danger notif">4</span>
+					</a> 				 
+					<div class="dropdown-menu dropdown-list">
+						<div class="dropdown-header">Notifications</div>
+						<div class="dropdown-list-content dropdown-list-icons">
+							<div class="custome-list-notif"> 
+							<a href="#" class="dropdown-item dropdown-item-unread">
+								<div class="dropdown-item-icon bg-primary text-white">
+								  <i class="fas fa-code"></i>
+								</div>
+								<div class="dropdown-item-desc">
+									The Atrana template has the latest update!
+								  <div class="time text-primary">3 Min Ago</div>
+								</div>
+							  </a>
+
+							  <a href="#" class="dropdown-item">
+								<div class="dropdown-item-icon bg-info text-white">
+								  <i class="far fa-user"></i>
+								</div>
+								<div class="dropdown-item-desc">
+								   Sri asks you for friendship!
+								  <div class="time">12 Hours Ago</div>
+								</div>
+							  </a>
+
+							  <a href="#" class="dropdown-item">
+								<div class="dropdown-item-icon bg-danger text-white">
+								  <i class="fas fa-check"></i>
+								</div>
+								<div class="dropdown-item-desc">
+									Storage has been cleared, now you can get back to work!
+								  <div class="time">20 Hours Ago</div>
+								</div>
+							  </a>
+
+						  
+							  <a href="#" class="dropdown-item">
+								<div class="dropdown-item-icon bg-info text-white">
+								  <i class="fas fa-bell"></i>
+								</div>
+								<div class="dropdown-item-desc">
+								    Welcome to Atrana Template, I hope you enjoy using this template!
+								  <div class="time">Yesterday</div>
+								</div>
+							  </a>
+ 
+							</div>
+						</div>
+
+						<div class="dropdown-footer text-center">
+						  <a href="#">View All</a>
+						</div>
+
+					  
+				  </li>
+			{% if seller_data %}
+			<li class="nav-item dropdown">
+				<a class="nav-link" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  <img src="{{seller_data.Pic.url}}" alt="">
+				</a>
+				</li>
+
+				{% else %}
+				  <li class="nav-item dropdown">
+					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  <img src="{% static 'assets/images/avatar/avatar-1.png' %}" alt="">
+					</a>
+					{% endif %}
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{% url 'seller_edit' %}"><i class="fa fa-user size-icon-1"></i> <span>My Profile</span></a>
+						<a class="dropdown-item" href="settings.html"><i class="fa fa-cog size-icon-1"></i> <span>Settings</span></a>
+						<hr class="dropdown-divider">
+						<a class="dropdown-item" href="#"><i class="fa fa-sign-out-alt  size-icon-1"></i> <span>My Profile</span></a>
+					</ul>
+				  </li>
+			</ul>
+		</div>
+	</div>
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+    <!-- Footer -->				
+	<footer>
+		<div class="footer">
+			<div class="float-start">
+				<p>2022 &copy; Atrana</p>
+			</div>
+				<div class="float-end">
+					<p>Crafted with 
+						<span class="text-danger">
+							<i class="fa fa-heart"></i> by 
+							<a href="https://www.facebook.com/andreew.co.id/" class="author-footer">Andre Tri Ramadana</a>
+						</span> 
+					</p>
+			</div>
+		</div>
+	</footer>
+
+	
+	<!-- Preloader -->
+	<!-- <div class="loader">
+		<div class="spinner-border text-light" role="status">
+			<span class="sr-only">Loading...</span>
+		</div> -->
+	<!-- </div> -->
+	
+	<!-- Loader -->
+	<div class="loader-overlay"></div>
+
+	<!-- General JS Scripts -->
+	<script src="{% static 'assets/js/atrana.js' %}"></script>
+
+	<!-- JS Libraies -->
+	<script src="{% static 'assets/modules/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'assets/modules/bootstrap-5.1.3/js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'assets/modules/popper/popper.min.js' %}"></script>
+
+	<!-- Chart Js -->
+	<script src="{% static 'assets/modules/apexcharts/apexcharts.js' %}"></script>
+	<script src="{% static 'assets/js/ui-apexcharts.js' %}"></script>
+
+    <!-- Template JS File -->
+	<script src="{% static 'assets/js/script.js' %}"></script>
+	<script src="{% static 'assets/js/custom.js' %}"></script>
+ </body>
+</html>

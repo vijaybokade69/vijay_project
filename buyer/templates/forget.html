@@ -1,0 +1,35 @@
+
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <style>
+        .container{
+            margin: 50px;
+        }
+    </style>
+</head>
+<div class="container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Forget Password</h5>
+               
+            </div>
+            <p>{{msg}}</p>
+            <div class="modal-body">
+                <form action="{% url 'forget' %}" method="post">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label class="col-form-label">Enter Your Email</label>
+                        <input type="email" class="form-control" placeholder=" email" name="email" required="">
+                    </div>
+                    
+                    <div class="right-w3l">
+                        <input type="submit" class="form-control" value="Submit ">
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
+{% endblock %}

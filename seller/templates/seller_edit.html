@@ -1,0 +1,88 @@
+
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+
+<body>
+ 
+	<div id="auth">
+        
+		<div class="row h-100">
+			<div class="col-lg-7 d-none d-lg-block">
+				<div id="auth-center">
+		
+				</div>
+			</div>
+			<div class="col-lg-5 col-12">
+				<div id="center">
+					<div class=>
+						<!-- <a href="index.html"><img src="{% static 'assets/images/logo.png' %}" alt="Logo"> Atrana</a>   -->
+					</div>
+					<h1 class="auth-title">EDIT_PROFILE</h1>
+					<p class="auth-subtitle mb-5">Let's edit your account.</p>
+
+					<form action="{% url 'seller_edit' %}" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+                        <li class="nav-item ">
+                            <a class="nav-link  " href="" >
+                              <img src="{{seller_data.Pic.url}}" alt="">
+                            </a>
+                         </li>
+						<div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" class="form-control form-control-xl" placeholder="Full_Name" name = "full_name"value ='{{seller_data.full_name}}'>
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+
+					    <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" class="form-control form-control-xl" placeholder="Email" name = "email" value ='{{seller_data.email}}' disabled>
+                            <div class="form-control-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="password" class="form-control form-control-xl" placeholder="Password" name = "password"value = '{{seller_data.password}}'>
+                            <div class="form-control-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" class="form-control form-control-xl" placeholder="Mobile no" name = "mobile"value = '{{seller_data.mobile}}'>
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" class="form-control form-control-xl" placeholder="GSTIN" name = "gstno" value = "{{seller_data.gstno}}">
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <label>Select Photo</label>
+                            <input type="file"  placeholder="PIC" name = "pic">
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+
+                        
+						
+                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5"><a href="{% url 'seller_index' %}">Submit</a></button>
+                        </a>
+					</form>
+                    <div class="text-center mt-5 text-lg fs-4">
+                        <p class='text-gray-600'>Already have an account? <a href="{% url 'seller_logout' %}" class="font-bold">Logout</a>.</p>
+                    </div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+		
+	 
+
+	
+{% endblock %}

@@ -1,0 +1,55 @@
+
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header">
+      <h4>My Products</h4>
+    </div>
+    <div class="card-body"> 
+    <div class="table-responsive"> 
+    <table class="table table-striped">
+      <thead>
+        <tr>
+        <th scope="col">product_name</th>
+        <th scope="col">descriptions</th>
+        <th scope="col">price</th>
+        <th scope="col">pic</th>
+        <th scope="col">action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in product_data %}
+        <tr>
+        <th scope="row">{{i.product_name}}</th>
+        <td>{{i.des}}</td>
+        <td>{{i.price}}</td>
+        <td><img src="{{i.pic.url}}" alt=""></td>
+        <td class="project-actions ">
+                          
+          <a class="btn btn-info btn-sm" href="{% url 'edit_product' i.id %}">
+              <i class="fas fa-pencil-alt">
+              </i>
+              Edit
+          </a>
+          <a class="btn btn-danger btn-sm" href="{% url 'del_product' i.id %}">
+              <i class="fas fa-trash">
+              </i>
+              Delete
+          </a>
+        <!-- <td><a href="{% url 'edit_product' i.id %}"><button>Edit</button></a>
+          <a href="{% url 'del_product' i.id %}"><button>Delete</button></a> -->
+        </td>
+      
+        </tr>
+
+        
+        {% endfor %}
+      </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
